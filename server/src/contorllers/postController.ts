@@ -219,3 +219,31 @@ export const editPost = async(req: Request, res: Response, next: NextFunction) =
         return next(new HttpError('Error al editar la publicación', 500)) 
     }
 }
+
+export const getCategories = async(_req: Request, res: Response, next: NextFunction) => {
+    try{
+        return res.status(200).json({
+        categories
+    })
+    } catch (error) {
+        return next(new HttpError('Error al obtener categorías', 500))
+    }
+}
+
+export const getPopularCategories = async(_req: Request, res: Response, next: NextFunction)  => {
+    try {
+        const categories = await Post.aggregate([
+            { $group: { _id: '$category', count: { $sum: 1 }}},
+            { $sort: { count: -1 }},
+            { $limit: 5 }
+        ])
+        if(!categories){
+            return next(new HttpError('No hay categorías populares', 404))
+        }
+        return res.status(200).json({
+            categories
+        })
+    } catch (error) {
+        return next(new HttpError('Error al obtener categorías populares', 500))    
+    }
+}

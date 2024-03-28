@@ -1,0 +1,21 @@
+.author{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author__thumbnail{
+    width: 3rem;
+    aspect-ratio: 1/1;
+    border-radius: var(--border-radius-2);
+    overflow: hidden;
+}
+
+.author__info{
+    display: flex;
+    flex-direction: column;
+}
+
+.author__info small:first-child{
+    font-weight: 600;
+}

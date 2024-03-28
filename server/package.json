@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev ./src/index.ts",
+    "dev": "concurrently \"npx tsc -w \" \"nodemon dist/index.js\"",
     "ts": "tsc",
     "start:dev": "nodemon dist/index.js",
     "start": "node dist/index.js",
@@ -21,6 +21,7 @@
     "@types/jsonwebtoken": "^9.0.6",
     "@types/multer": "^1.4.11",
     "@types/uuid": "^9.0.8",
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.2"

@@ -21,12 +21,7 @@ const Header = () => {
     return () => {
         window.removeEventListener('scroll', changeBackground)
     }
-  }, [])
-
-  const  stickyNav = (window.innerWidth > 768) && !bgOnScroll ? true : false
-  console.log(window.innerWidth > 768, bgOnScroll)
-  console.log(window.innerWidth, window.scrollY)
-  console.log(stickyNav)
+  }, [])  
 
   return (
     <nav className={`nav ${window.innerWidth > 768 ? (bgOnScroll ? 'active' : '') : 'primary'}`}>

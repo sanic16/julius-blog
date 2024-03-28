@@ -2,7 +2,14 @@ import classes from './SquareLoader.module.css'
 
 const SquareLoader = () => {
   return (
-    <div>SquareLoader</div>
+    <div 
+        className={`${classes.container}`}
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
   )
 }
 

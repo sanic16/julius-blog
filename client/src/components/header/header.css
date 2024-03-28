@@ -34,11 +34,11 @@
 }
 
 .nav__menu{
-    display: flex;    
+    display: flex; 
+    gap: 2rem;   
 }
 
 .nav__menu li a{
-    padding: 0.5rem 1rem;
     color: #fff;
 }
 
@@ -65,8 +65,7 @@
         left: -300px;
         bottom: 0;
         width: 300px;
-        background-color: lch(39% 118 var(--primary-hue));
-        box-shadow: .5rem 0 1rem  lch(32% 118 var(--primary-hue)/50%);
+        background-color: hsl(var(--primary-hue), 80%, 50%);
         transition: left 500ms cubic-bezier(1, 0, 0, 1);
         padding-top: 4rem;
         padding-inline: 1.5rem;
@@ -79,12 +78,8 @@
     }
 
     .nav__menu li {
-        padding: 1rem 0;
         color: #fff;
     }
-
-    .nav__menu li a{
-    } 
 
     .nav__menu-wrapper.active{
         left: 0;
