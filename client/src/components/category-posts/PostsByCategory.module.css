@@ -1,0 +1,14 @@
+.category__posts{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 1fr;
+    justify-content: center;
+    column-gap: 4rem;
+    row-gap: 4rem;
+}
+
+@media screen and (max-width: 590px){
+    .category__posts{
+        grid-auto-rows: auto;
+    }
+}

@@ -1,7 +1,8 @@
+import classes from './Dashboard.module.css'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <section className="das">Dashboard</section>
   )
 }
 
