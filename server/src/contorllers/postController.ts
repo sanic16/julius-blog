@@ -21,7 +21,7 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
             return next(new HttpError('El contenido debe tener al menos 50 caracteres', 400))
         }
 
-        if(file.size > 1000000){
+        if(file.size > 5000000){
             return next(new HttpError('El archivo es demasiado grande', 400))
         }
 

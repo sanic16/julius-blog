@@ -1,12 +1,22 @@
+
+import { setCategories } from "../../store/slices/catSlice"
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { useGetCategoriesQuery } from "../../store/slices/postsApiSlice"
 import './footer.css'
+import { useEffect } from "react"
 const Footer = () => {
   const {
     data: categories,
     
   } = useGetCategoriesQuery()
-  console.log('base_url', import.meta.env.VITE_BASE_URL,)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if(categories){
+      dispatch(setCategories({cat: categories.categories}))
+    }
+  
+  }, [categories, dispatch])
   return (
     <footer className="footer">
       <div 

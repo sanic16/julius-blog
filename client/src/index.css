@@ -172,6 +172,18 @@ section{
   border-color: #fff;
 }
 
+.btn.disabled{
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  cursor: not-allowed;
+}
+
+.btn.disabled:hover{
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  border-color: var(--light-color);
+}
+
 @media screen and (max-width: 800px){
   .container{
     width: var(--container-width-md);

@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Author from "../../components/author/Author"
 import Loader from "../../components/loader/Loader"
-import { useGetPostQuery } from "../../store/slices/postsApiSlice"
+import { useDeletePostMutation, useGetPostQuery } from "../../store/slices/postsApiSlice"
 import classes from './PostDetail.module.css'
+import { toast } from "react-toastify"
 
 const PostDetail = () => {
   const { id } = useParams<{id: string}>()
@@ -11,8 +12,17 @@ const PostDetail = () => {
     isError,
     isLoading
   } = useGetPostQuery(id!)
-
-
+  const navigate = useNavigate()
+  const [deletePost, {isLoading: isDeleting}] = useDeletePostMutation()
+  const handleDeletePost = async(id: string) => {
+    try{
+      await deletePost(id).unwrap()
+      toast.success('Publicación eliminada')
+      navigate('/dashboard')
+    }catch(error){
+      toast.error('Error al eliminar la publicación')
+    }
+  }
 
   return (
     <section className={classes.post__detail}>
@@ -38,8 +48,11 @@ const PostDetail = () => {
                         <button className="btn white">
                           Editar
                         </button>
-                        <button className="btn warning">
-                          Eliminar
+                        <button 
+                          className={`btn warning ${isDeleting ? 'disabled' : ''}`}
+                          onClick={() => handleDeletePost(data.post._id)}
+                        >
+                          {isDeleting ? 'Eliminando...' : 'Eliminar'}
                         </button>
                     </div>  
                 </div>  

@@ -1,12 +1,23 @@
 import classes from './Dashboard.module.css'
-import { useGetPostsByAuthorQuery } from '../../store/slices/postsApiSlice'
+import { useDeletePostMutation, useGetPostsByAuthorQuery } from '../../store/slices/postsApiSlice'
 import Loader from '../../components/loader/Loader'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Dashboard = () => {
   const { user } = useSelector((state: {auth: AuthState}) => state.auth)
   const { data, isLoading, isError } = useGetPostsByAuthorQuery(user?.id || '')
+  const navigate = useNavigate()
+  const [deletePost, {isLoading: isDeleting}] = useDeletePostMutation()
+  const handleDeletePost = async(id: string) => {
+    try{
+      await deletePost(id).unwrap()
+      toast.success('Publicación eliminada')
+    }catch(error){
+      toast.error('Error al eliminar la publicación')
+    }
+  }
   return (
     <section className={classes.dashboard}>
       <h1>
@@ -43,14 +54,25 @@ const Dashboard = () => {
                     </div>
 
                     <div className={classes.actions}>
-                      <button className='btn sm primary'>
+                      <button 
+                        className='btn sm primary'
+                        onClick={() => navigate(`/post/${post._id}`)}
+                      >
                         Ver Post
                       </button>
-                      <button className='btn sm white'>
+                      <button 
+                        className='btn sm white'
+                      >
                         Editar
                       </button>
-                      <button className='btn warning sm'>
-                        Eliminar
+                      <button 
+                        className={`btn sm warning ${isDeleting ? 'disabled' : ''}`}
+                        onClick={() => handleDeletePost(post._id)}
+                        disabled={isDeleting}
+                      >
+                          {
+                            !isDeleting ? 'Eliminar' : 'Eliminando...'
+                          }
                       </button>
                     </div>
                   </div>

@@ -1,0 +1,41 @@
+.create__post{
+    display: grid;
+    justify-items: center;
+}
+.create__post-container{
+    width: var(--form-width-lg);
+    margin-inline: auto;
+}
+
+.create__post-container h1{
+    margin-bottom: 2rem;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.file{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thumbnail{
+    width: 5rem;
+    aspect-ratio: 16/10;
+}
+
+.quill__editor{
+    overflow: scroll;
+    height: 10rem;
+    background-color: #fff;
+    color: #000;
+}
+
+@media screen and (max-width: 768px){
+    .create__post-container{
+        width: 100%;
+    }
+}

@@ -49,6 +49,9 @@ const Header = () => {
                                     <Link to='/dashboard'>Dashboard</Link>
                                 </li>
                                 <li>
+                                    <Link to='/create'>Crear</Link>
+                                </li>
+                                <li>
                                     <Link to='/profile'>
                                         {user.name}
                                     </Link>
