@@ -65,7 +65,7 @@ const Header = () => {
                         ) : (
                             <>
                                 <li>
-                                    <Link to={'/'}>
+                                    <Link to={'/authors'}>
                                         Authores    
                                     </Link>
                                  </li>

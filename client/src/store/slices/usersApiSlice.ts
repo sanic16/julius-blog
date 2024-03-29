@@ -24,11 +24,19 @@ const usersApiSlice = api.injectEndpoints({
                 method: 'GET'
             })
         }),
+        getAuthors: builder.query<Author[], void>({
+            query: () => ({
+                url: '/users',
+                method: 'GET'
+            }),
+            providesTags: ['Authors']
+        })
     })
 })
 
 export const {
     useGetAuthorQuery,
     useRegisterMutation,
-    useLoginMutation
+    useLoginMutation,
+    useGetAuthorsQuery
 } = usersApiSlice

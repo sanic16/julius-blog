@@ -30,6 +30,7 @@ type Author = {
     email: string
     avatar: string 
     posts: number
+    createdAt: string
 }
 
 type RegisterUser = {

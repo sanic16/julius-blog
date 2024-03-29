@@ -3,10 +3,10 @@
 :root{
   --primary-hue: 256;  
   
-  --white-lightness: 94%;
-  --light-lightness: 85%;
-  --dark-lightness: 16%;
-  --black-lightness: 4%;
+  --white-lightness: 4%;
+  --light-lightness: 15%;
+  --dark-lightness: 84%;
+  --black-lightness: 95%;
   
   --primary-color: hsl(var(--primary-hue), 88%, 44%);
   --primary-trans: hsla(var(--primary-hue), 88%, 42%, 0.65);
