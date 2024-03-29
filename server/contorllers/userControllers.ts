@@ -1,12 +1,9 @@
 import User from "../models/userModel";
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import fs from 'fs'
-import path from 'path'
 import { v4 as uuid } from 'uuid'
 import HttpError from "../models/errorModel";
 import { type Request, type Response, type NextFunction } from 'express'
-import upload from "../utils/m";
 import { deleteObject, getObjectSignedUrl, uploadObject } from "../utils/s3";
 
 export const registerUser = async(req: Request, res: Response, next: NextFunction) => {
