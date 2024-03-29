@@ -45,3 +45,11 @@ type LoggedUser = {
     name: string
     token: string
 }
+
+type Profile = {
+    name: string
+    email: string
+    currentPassword: string
+    newPassword: string
+    confirmNewPassword: string
+}

@@ -30,6 +30,29 @@ const usersApiSlice = api.injectEndpoints({
                 method: 'GET'
             }),
             providesTags: ['Authors']
+        }),
+        getProfile: builder.query<Author, void>({
+            query: () => ({
+                url: '/users/profile',
+                method: 'GET'
+            }),
+            providesTags: ['Profile']
+        }),
+        updateProfile: builder.mutation<Author, Profile>({
+            query: (body) =>({
+                url: '/users/edit-user',
+                method: 'PATCH',
+                body: body
+            }),
+            invalidatesTags: ['Authors', 'Profile']
+        }),
+        changeAvatar: builder.mutation<string, FormData>({
+            query: (body) => ({
+                url: '/users/change-avatar',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Authors', 'Profile']
         })
     })
 })
@@ -38,5 +61,8 @@ export const {
     useGetAuthorQuery,
     useRegisterMutation,
     useLoginMutation,
-    useGetAuthorsQuery
+    useGetAuthorsQuery,
+    useGetProfileQuery,
+    useUpdateProfileMutation,
+    useChangeAvatarMutation
 } = usersApiSlice

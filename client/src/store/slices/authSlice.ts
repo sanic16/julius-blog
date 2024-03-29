@@ -23,12 +23,17 @@ const authSlice = createSlice({
             state.user = null
             state.token = null
             localStorage.removeItem('auth')
-        }  
+        },
+        updateProfile: (state, action: {payload: string}) => {
+            state.user!.name = action.payload
+            localStorage.setItem('auth', JSON.stringify(state))
+        }
     }
 })
 
 export default authSlice.reducer
 export const {
     login,
-    logout
+    logout,
+    updateProfile
 } = authSlice.actions

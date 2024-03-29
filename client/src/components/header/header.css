@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     transition: background-color  var(--transition);
+    z-index: 1;
 }
 
 .nav.active{
