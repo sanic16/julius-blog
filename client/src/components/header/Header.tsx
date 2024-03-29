@@ -3,11 +3,17 @@ import logo from './../../assets/logo.png'
 import './header.css'
 import { useEffect, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../store/slices/authSlice'
+import { toast } from 'react-toastify'
 
 const Header = () => {
   const [bgOnScroll, setBgOnScroll] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const { user} = useSelector((state: {auth: AuthState}) => state.auth)
   
+  const dispatch = useDispatch()
+
   useEffect(() => {
     const changeBackground = () => {
         if(window.scrollY >= 80) {
@@ -23,6 +29,11 @@ const Header = () => {
     }
   }, [])  
 
+  const handleLogout = () => {
+    dispatch(logout())
+    toast.success('Sesión cerrada correctamente')
+  }
+
   return (
     <nav className={`nav ${window.innerWidth > 768 ? (bgOnScroll ? 'active' : '') : 'primary'}`}>
         <div className="container nav__container">
@@ -31,16 +42,41 @@ const Header = () => {
             </Link>
             <div className={`nav__menu-wrapper ${isOpen ? 'active' : null}`}>
                 <ul className='nav__menu'>
-                    <li>
-                        <Link to={'/'}>
-                            Authores    
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={'/login'}>
-                            Iniciar Sesión
-                        </Link>
-                    </li>
+                    {
+                        user?.name ? (
+                            <>
+                                <li>
+                                    <Link to='/dashboard'>Dashboard</Link>
+                                </li>
+                                <li>
+                                    <Link to='/profile'>
+                                        {user.name}
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link 
+                                        to='/'
+                                        onClick={handleLogout}
+                                    >
+                                        Cerrar Sesión
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to={'/'}>
+                                        Authores    
+                                    </Link>
+                                 </li>
+                                <li>
+                                    <Link to={'/login'}>
+                                        Iniciar Sesión
+                                    </Link>
+                                </li>
+                            </>
+                        )
+                    }
                 </ul>
             </div>
             <div className="nav__mobile">

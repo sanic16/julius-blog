@@ -1,24 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-  --primary-hue: 180;  
-
-  --white-lightness: 6%;
-  --light-lightness: 16%;
-  --dark-lightness: 96%;
-  --black-lightness: 16%;
+  --primary-hue: 256;  
   
-  --primary-color: hsl(var(--primary-hue), 88%, 42%);
+  --white-lightness: 94%;
+  --light-lightness: 85%;
+  --dark-lightness: 16%;
+  --black-lightness: 4%;
+  
+  --primary-color: hsl(var(--primary-hue), 88%, 44%);
   --primary-trans: hsla(var(--primary-hue), 88%, 42%, 0.65);
 
   --white-color: hsl(var(--primary-hue), 5%, var(--white-lightness));
   --light-color: hsl(var(--primary-hue), 5%, var(--light-lightness));
   --dark-color: hsl(var(--primary-hue), 5%, var(--dark-lightness));
   --black-color: hsl(var(--primary-hue), 5%, var(--black-lightness));
+
+  --error-color: hsl(0, 84%, 60%);
+
   
   --container-width-lg: 84%;
   --container-width-md: 90%;
-  --form-width: 50%;
+  --form-width-lg: 60%;
+  --form-width-md: 56%;
 
   --border-radius-1: 0.25rem;
   --border-radius-2: 0.5rem;
@@ -102,8 +106,7 @@ h6{
 }
 
 main{
-  margin-top: 5rem;
-  min-height: calc(100vh - 5rem - 6rem);
+  padding-top: 5rem;
   width: var(--container-width-lg);
   max-width: 1200px;
   margin-inline: auto;
@@ -111,6 +114,7 @@ main{
 
 section{
   padding: 2rem 0;
+  min-height: calc(100vh - 5rem - 6rem);
 }
 
 .container{
@@ -118,14 +122,6 @@ section{
   margin-inline: auto;
   max-width: 1200px;
 }
-
-.center__spinner{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative
-}
-
 .btn{
   width: fit-content;
   padding: 0.4rem 1rem;
@@ -136,30 +132,51 @@ section{
   transition: var(--transition);
   border: 1px solid transparent;
 }
+.btn:hover{
+  background-color: hsl(var(--primary-hue), 68%, 26%);
+}
 
 .btn.sm{
   padding: 0.3rem 0.6rem;
 }
 
 .btn.white{
-  background-color: #fff;
-  color: var(--primary-color);
-}
-
-.btn:hover{
-  background-color: #fff;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background-color: var(--black-color);
+  color: var(--white-color);
 }
 
 .btn.white:hover{
-  background-color: var(--primary-color);
-  border-color: #fff;
-  color: #fff;
+  background-color: var(--white-color);
+  border-color: var(--black-color);
+  color: var(--black-color);
 }    
 
-@media screen and (max-width: 768px){
+.btn.warning{
+  background-color: var(--error-color);
+}
+
+.btn.warning:hover{
+  background-color: var(--white-color);
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+.btn.outline{
+  background-color: #fff;
+  color: var(--primary-color);
+}
+
+.btn.outline:hover{
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: #fff;
+}
+
+@media screen and (max-width: 800px){
   .container{
+    width: var(--container-width-md);
+  }
+  main{
     width: var(--container-width-md);
   }
 }

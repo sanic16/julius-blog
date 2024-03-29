@@ -15,9 +15,9 @@ const Footer = () => {
               {
                 categories?.categories.map(category => (
                   <Link 
-                    to={`/category/${category}`} 
+                    to={`/posts/categories/${category}`} 
                     key={category}
-                    className="btn sm white"
+                    className="btn sm outline"
                   >
                     {category}
                   </Link>

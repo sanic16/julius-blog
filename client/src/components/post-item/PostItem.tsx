@@ -32,7 +32,6 @@ const PostItem = (
                     <Author
                         creator={post.creator}
                         createdAt={post.createdAt}
-                        thumbnail={post.thumbnail}
                     />
                     <button
                         onClick={ () => navigate(`/posts/categories/${post.category}`)}

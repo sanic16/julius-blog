@@ -1,0 +1,54 @@
+section.login,
+section.register
+{
+    display: grid;
+    align-items: center;
+    margin-inline: auto;
+    width: var(--form-width-lg);
+}
+.form__container h2{
+    margin-bottom: 2rem;
+}
+
+.form__container small{
+    display: block;
+    margin-top: 1.5rem;
+}
+
+.form__container small a{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+
+}
+
+.form__error-message.hidden{
+    visibility: hidden;
+}
+
+
+
+@media screen and (max-width: 768px){
+    section.login,
+    section.register{
+        width: 100%;
+    }
+    
+    .form__error-message{
+        top: 3.5rem;
+    }
+}

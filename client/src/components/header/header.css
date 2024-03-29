@@ -69,6 +69,7 @@
         transition: left 500ms cubic-bezier(1, 0, 0, 1);
         padding-top: 4rem;
         padding-inline: 1.5rem;
+        z-index: 2;
     }
 
     .nav__menu{

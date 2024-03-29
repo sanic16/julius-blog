@@ -9,6 +9,9 @@
     "ts": "tsc",
     "start:dev": "nodemon dist/index.js",
     "start": "node dist/index.js",
+    "build:server": "rm -rf ./dist && npx tsc",
+    "build:client": "rm -rf ./../dist && npm run build --prefix ../client && cp -r ../client/dist ./dist/react",
+    "build:prod": "npm run build:server && npm run build:client",
     "lint": "eslint ."
   },
   "keywords": [],

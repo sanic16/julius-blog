@@ -2,11 +2,11 @@
 type AuthUser = {
     id: string
     name: string
-    isAdmin?: boolean 
+    isAdmin?: boolean | null
 }
 
 type AuthState = {
-    auth: AuthUser | null
+    user: AuthUser | null
     token: string | null
 }
 
@@ -30,4 +30,17 @@ type Author = {
     email: string
     avatar: string 
     posts: number
+}
+
+type RegisterUser = {
+    name: string
+    email: string
+    password: string
+    password2: string
+}
+
+type LoggedUser = {
+    id: string
+    name: string
+    token: string
 }

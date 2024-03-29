@@ -1,11 +1,10 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Layout from "../layout/Layout";
 
 const PrivateRoot = () => {
-  const { auth } = useSelector((state: {auth: AuthState}) => state.auth)
+  const { user } = useSelector((state: {auth: AuthState}) => state.auth)
 
-  return auth ? <Layout /> : <Navigate to={'/login?redirect=/'} />
+  return user ? <Outlet /> : <Navigate to={'/login'} />
 }
 
 export default PrivateRoot

@@ -1,35 +1,35 @@
 import { Link } from 'react-router-dom'
 import { useGetAuthorQuery } from '../../store/slices/usersApiSlice'
-import './author.css'
+import classes from './Author.module.css' 
 
 const Author = (
     {
         creator,
-        thumbnail,
-        createdAt,
+        createdAt
     }:{
         creator: string,
-        thumbnail: string,
         createdAt: string
     }
 ) => {
   const { data: author} = useGetAuthorQuery(creator)  
   return (
-    <Link to={`/posts/authors/${creator}`}>
-      <div className='author'>
-        <div className='author__thumbnail'>
-            <img src={thumbnail} alt={creator}/>
-        </div>
-        <div className='author__info'>
-            <small>
-                {author?.name}
-            </small>
-            <small>
-                {new Date(createdAt).toLocaleDateString()}
-            </small>
-        </div>  
+    
+      <div className={classes.author}>
+        <Link to={`/posts/authors/${creator}`}>
+          <div className={classes.author__thumbnail}>
+              <img src={author?.avatar} alt={creator}/>
+          </div>
+          <div className={classes.author__info}>
+              <small>
+                  {author?.name}
+              </small>
+              <small>
+                  {new Date(createdAt).toLocaleDateString()}
+              </small>
+          </div>  
+        </Link>
       </div>
-    </Link>
+    
   )
 }
 

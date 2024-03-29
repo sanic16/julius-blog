@@ -36,9 +36,10 @@ const router = createBrowserRouter([
 
         // private routes-
         {path: '/', element: <PrivateRoot />, children: [
-            {path: 'user-profile', element: <UserProfile />},
+            {path: 'profile', element: <UserProfile />},
             {path: 'posts/:id/edit', element: <EditPost />},
             {path: 'create', element: <CreatePost />},
+            {path: 'dashboard', element: <Dashboard />}
         ]},    
     ],  
   }

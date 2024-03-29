@@ -1,7 +1,7 @@
 .footer{
-    background-color: var(--primary-color);
-    padding-top: 6rem;
     margin-top: 6rem;
+    padding-top: 6rem;
+    background-color: var(--primary-color);
 }
 
 .footer__categories{

@@ -6,9 +6,7 @@ import classes from './Posts.module.css'
 const Posts = () => {
   const { data, isLoading, isError } = useGetPostsQuery()  
   return (
-    <div
-      className={`${isLoading || isError ? 'center__spinner' : null}`}
-    >
+    <div>
         {
           isLoading ? (
             <Loader />

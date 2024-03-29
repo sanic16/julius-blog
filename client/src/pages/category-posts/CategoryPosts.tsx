@@ -1,7 +1,12 @@
+import './categoryPosts.css'
 
 const CategoryPosts = () => {
   return (
-    <div>CategoryPosts</div>
+    <section className="category__posts">
+      <div className="center__spinner">
+        
+      </div>
+    </section>
   )
 }
 
