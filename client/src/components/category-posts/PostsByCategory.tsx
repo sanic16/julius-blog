@@ -12,7 +12,7 @@ const PostsByCategory = (
 ) => {
   const { data, isLoading, isError } = useGetPostsByCategoryQuery(categoryID)
   return (
-    <div className={classes.category__posts}>
+    <div>
         {
           isLoading ? (
             <Loader />
@@ -21,7 +21,7 @@ const PostsByCategory = (
                 Error al cargar las publicaciones
             </h3>
           ) : (
-            <>
+            <div className={classes.category__posts}>
               {
                 data?.posts.map(post => (
                   <PostItem
@@ -30,7 +30,7 @@ const PostsByCategory = (
                   />
                 ))
               }
-            </>
+            </div>
           )
         }
     </div>

@@ -2,13 +2,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     align-items: start;
+    align-content: start;
     gap: 2rem;
 }
 
 .author{
     background-color: var(--light-color);
     padding: 1rem;
-    border-radius: var(--border-radius-2);
+    border-radius: 1.5rem 0 1rem 0;
     border: 2px solid transparent;
     transition: var(--transition);
     box-shadow: 0 5px 15px hsla(0, 0%, var(--black-lightness), .53);
@@ -24,7 +25,6 @@
 .author:hover{
     border-color: var(--light-color);
     background-color: transparent;
-    transform: translateY(-2px);
 }
 
 .avatar{

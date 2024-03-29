@@ -12,16 +12,14 @@ const PostsByAuthor = (
 ) => {
   const { data, isLoading, isError } = useGetPostsByAuthorQuery(authorID)
   return (
-    <div
-    className={`${isLoading || isError ? 'center__spinner' : null}`}
-    >
+    <div>
         {
           isLoading ? (
             <Loader />
           ) : isError ? (
-            <h3>
-              Error loading categories
-            </h3>
+            <h1>
+              Error al cargar las publicaciones
+            </h1>
           ) : (
             <div
           className={classes.posts}
