@@ -9,6 +9,7 @@ const Dashboard = () => {
   const { user } = useSelector((state: {auth: AuthState}) => state.auth)
   const { data, isLoading, isError } = useGetPostsByAuthorQuery(user?.id || '')
   const navigate = useNavigate()
+
   const [deletePost, {isLoading: isDeleting}] = useDeletePostMutation()
   const handleDeletePost = async(id: string) => {
     try{
@@ -21,7 +22,7 @@ const Dashboard = () => {
   return (
     <section className={classes.dashboard}>
       <h1>
-        Dashboard
+        Mis publicaciones
       </h1>
       <div className={classes.dashboard__posts}>
       {
@@ -62,6 +63,7 @@ const Dashboard = () => {
                       </button>
                       <button 
                         className='btn sm white'
+                        onClick={() => navigate(`/posts/${post._id}/edit`)}
                       >
                         Editar
                       </button>

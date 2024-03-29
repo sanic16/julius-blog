@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-  --primary-hue: 256;  
+  --primary-hue: 350;  
   
-  --white-lightness: 4%;
-  --light-lightness: 15%;
-  --dark-lightness: 84%;
-  --black-lightness: 95%;
+  --white-lightness: 94%;
+  --light-lightness: 85%;
+  --dark-lightness: 14%;
+  --black-lightness: 5%;
   
-  --primary-color: hsl(var(--primary-hue), 88%, 44%);
+  --primary-color: hsl(var(--primary-hue), 88%, 42%);
   --primary-trans: hsla(var(--primary-hue), 88%, 42%, 0.65);
 
   --white-color: hsl(var(--primary-hue), 5%, var(--white-lightness));

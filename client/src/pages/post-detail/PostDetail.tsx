@@ -4,6 +4,7 @@ import Loader from "../../components/loader/Loader"
 import { useDeletePostMutation, useGetPostQuery } from "../../store/slices/postsApiSlice"
 import classes from './PostDetail.module.css'
 import { toast } from "react-toastify"
+import { useSelector } from "react-redux"
 
 const PostDetail = () => {
   const { id } = useParams<{id: string}>()
@@ -14,6 +15,7 @@ const PostDetail = () => {
   } = useGetPostQuery(id!)
   const navigate = useNavigate()
   const [deletePost, {isLoading: isDeleting}] = useDeletePostMutation()
+  const { user } = useSelector((state: {auth: AuthState}) => state.auth)
   const handleDeletePost = async(id: string) => {
     try{
       await deletePost(id).unwrap()
@@ -42,19 +44,26 @@ const PostDetail = () => {
                       creator={data.post.creator}
                       createdAt={data.post.createdAt}
                     />
-                    <div
-                      className={classes.actions}
-                    >
-                        <button className="btn white">
-                          Editar
-                        </button>
-                        <button 
-                          className={`btn warning ${isDeleting ? 'disabled' : ''}`}
-                          onClick={() => handleDeletePost(data.post._id)}
+                    {
+                      user?.id === data.post.creator && (
+                        <div
+                          className={classes.actions}
                         >
-                          {isDeleting ? 'Eliminando...' : 'Eliminar'}
-                        </button>
-                    </div>  
+                            <button 
+                              className="btn white"
+                              onClick={() => navigate(`/posts/${data.post._id}/edit`)}
+                            >
+                              Editar
+                            </button>
+                            <button 
+                              className={`btn warning ${isDeleting ? 'disabled' : ''}`}
+                              onClick={() => handleDeletePost(data.post._id)}
+                            >
+                              {isDeleting ? 'Eliminando...' : 'Eliminar'}
+                            </button>
+                         </div>  
+                      )
+                    }
                 </div>  
                 <div
                   className={classes.post__body}
