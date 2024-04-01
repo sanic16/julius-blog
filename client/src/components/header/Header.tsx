@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import logo from './../../assets/logo.png'
 import './header.css'
 import { useEffect, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
@@ -38,7 +37,7 @@ const Header = () => {
     <nav className={`nav ${window.innerWidth > 768 ? (bgOnScroll ? 'active' : '') : 'primary'}`}>
         <div className="container nav__container">
             <Link to={'/'} className='nav__logo'>
-                <img src={logo} alt='logo' />
+                JuliusBlog
             </Link>
             <div className={`nav__menu-wrapper ${isOpen ? 'active' : null}`}>
                 <ul className='nav__menu'>
